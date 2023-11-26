@@ -18,6 +18,8 @@ flask_bcrypt = Bcrypt(app)
 from application.users import models as user_models
 from application.users.views import users
 
+app.register_blueprint(users, url_prefix='/users')
+
 @login_manager.user_loader
 def load_user(user_id):
     return user_models.User.query.get(user_id)

@@ -8,35 +8,45 @@ from application.users.models import User
 from application import flask_bcrypt
 
 
-users = Blueprint('users', __name__, template_folder='templates')
+users = Blueprint('users', __name__, template_folder='../templates')
 
 class LoginForm(FlaskForm):
     """Login form."""
     username = StringField('username', validators=[DataRequired()])
-    password = PasswordField('password',  Length(min=6), validators=[DataRequired()])
+    password = PasswordField('password',  validators=[DataRequired(), Length(min=6)])
 
     @users.route('/login', methods=['GET', 'POST'])
     def login():
         """Login page for users."""
-        if current_user.is_authenticated():
-            return redirect(url_for('snaps.listing'))
+        if current_user.is_authenticated:
+            return redirect(url_for("users.index"))
     
         form = LoginForm()
         if form.validate_on_submit():
             user = User.query.filter_by(username=form.username.data).first()
 
             if user and flask_bcrypt.check_password_hash(
-                    user.password, request.form['password']):
+                    user.password,
+                    form.password.data
+                    # request.form['password']
+                ):
                 login_user(user, remember=True)
                 flash("Logged in successfully.")
-                return redirect(request.args.get("next") or url_for("snaps.listing"))
+                # return redirect(request.args.get("next") or url_for("snaps.listing"))
+                return redirect(url_for("users.index"))
             else:
                 flash("That username or password is not correct.")
-        return render_template("login.html", form=form)
+        return render_template("users/login.html", form=form)
     
     @users.route('/logout', methods=['GET'])
     def logout():
         """Logout the current user."""
         logout_user()
         flash("You have been logged out.")
-        return redirect(url_for('snaps.listing'))
+        # return redirect(url_for('snaps.listing'))
+        return redirect(url_for('users.login'))
+    
+    @users.route('/index', methods=['GET'])
+    def index():
+        """User index page."""
+        return render_template('users/index.html')

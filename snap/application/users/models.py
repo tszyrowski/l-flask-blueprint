@@ -37,14 +37,17 @@ class User(db.Model):
     def __repr__(self):
         return '<User {!r}>'.format(self.username)
 
+    # @property
     def is_authenticated(self):
         """All our registered users are authenticated."""
         return True
 
+    @property
     def is_active(self):
         """All our users are active."""
         return True
 
+    @property
     def is_anonymous(self):
         """We don)::f):lf):users are authenticated."""
         return False
