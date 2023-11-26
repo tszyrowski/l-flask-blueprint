@@ -19,7 +19,8 @@ class LoginForm(FlaskForm):
     def login():
         """Login page for users."""
         if current_user.is_authenticated:
-            return redirect(url_for("users.index"))
+            # return redirect(url_for("users.index"))
+            return redirect(url_for("snaps.listing"))
     
         form = LoginForm()
         if form.validate_on_submit():
@@ -32,8 +33,8 @@ class LoginForm(FlaskForm):
                 ):
                 login_user(user, remember=True)
                 flash("Logged in successfully.")
-                # return redirect(request.args.get("next") or url_for("snaps.listing"))
-                return redirect(url_for("users.index"))
+                return redirect(request.args.get("next") or url_for("snaps.listing"))
+                # return redirect(url_for("users.index"))
             else:
                 flash("That username or password is not correct.")
         return render_template("users/login.html", form=form)
@@ -43,8 +44,8 @@ class LoginForm(FlaskForm):
         """Logout the current user."""
         logout_user()
         flash("You have been logged out.")
-        # return redirect(url_for('snaps.listing'))
-        return redirect(url_for('users.login'))
+        return redirect(url_for('snaps.listing'))
+        # return redirect(url_for('users.login'))
     
     @users.route('/index', methods=['GET'])
     def index():

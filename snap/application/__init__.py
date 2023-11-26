@@ -17,8 +17,10 @@ flask_bcrypt = Bcrypt(app)
 
 from application.users import models as user_models
 from application.users.views import users
+from application.snaps.views import snaps
 
 app.register_blueprint(users, url_prefix='/users')
+app.register_blueprint(snaps, url_prefix='')
 
 @login_manager.user_loader
 def load_user(user_id):
