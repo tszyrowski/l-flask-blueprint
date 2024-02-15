@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Snaps</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+    <body>
+        <h1>Snaps</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% for category, message in messages %}
+            <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+        {% endwith %}
+
+        <nav>
+            {% if current_user.is_authenticated %}
+                <div>Welcome, {{ current_user.username }}! <a href="{{ url_for('users.logout') }}">Log out</a></div>
+            {% else %}
+                <a href="{{ url_for('users.login') }}">Log in</a>
+            {% endif %}
+        </nav>
+
+        <div class="content">
+
+        {% block content %}{% endblock %}
+        </div>
+    </body>
+</html>

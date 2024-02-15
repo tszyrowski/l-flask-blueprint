@@ -1,0 +1,164 @@
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Header */
+h1 {
+    background-color: #007bff;
+    color: #fff;
+    padding: 20px;
+    margin: 0;
+    text-align: center;
+}
+
+/* Navigation */
+nav {
+    background-color: #343a40;
+    padding: 10px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    margin: 0 5px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Flash messages */
+.flash {
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #fff;
+}
+
+.flash.success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.flash.error {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.flash.info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+
+/* Content styling */
+.content {
+    padding: 20px;
+}
+
+/* Forms and Inputs */
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0 20px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Utility classes */
+.errors li {
+    color: #dc3545;
+    list-style-type: none;
+}
+
+/* Additional styles for snap listing */
+
+.snap {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.snap .author {
+    font-weight: bold;
+}
+
+.snap .date {
+    font-size: 0.85em;
+    color: #666;
+}
+
+/* Styling for the code block */
+.snap pre {
+    background-color: #f4f4f4;
+    border: 1px solid #ececec;
+    border-radius: 4px;
+    padding: 10px;
+    overflow-y: auto; /* Make it scrollable */
+    max-height: 4.5em; /* Adjust based on your line-height to show only the first three lines */
+    white-space: pre-wrap; /* Ensures that the text wraps and respects new lines */
+    word-wrap: break-word; /* Breaks the words to prevent horizontal scrolling */
+    font-size: 0.95em;
+    line-height: 1.5em; /* Adjust the line height as needed */
+}
+
+/* Enhancements for the new snap link */
+.new-snap a {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+.new-snap a:hover {
+    background-color: #0056b3;
+}
