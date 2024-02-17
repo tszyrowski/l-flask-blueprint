@@ -1,23 +1,21 @@
-from application import create_app
 import unittest
 
-class AppTestCase(unittest.TestCase):
-    def setUp(self):
-        app = create_app(config='settings')
-        app.config['TESTING'] = True
-        self.app = app
+from application import create_app
 
-    def tearDown(self):
+
+class AppTestCase(unittest.TestCase):
+
+    def setUp(self) -> None:
+        app = create_app()
+        app.config["TESTING"] = True
+        self.app = app
+        # Further DB initialisation
+
+    def tearDown(self) -> None:
         pass
 
     def test_app_configuration(self):
-        self.assertTrue(self.app.config['TESTING'])
+        self.assertTrue(self.app.config["TESTING"])
 
-    # def test_home_status_code(self):
-    #     result = self.client.get('/')
-    #     self.assertEqual(result.status_code, 200)
-
-    # def test_home_data(self):
-    #     result = self.client.get('/')
-    #     self.assertEqual(result.data, b'Hello, World!')
-
+if __name__ == "__main__":
+    unittest.main()
