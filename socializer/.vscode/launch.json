@@ -5,6 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Pytest Current File",
+            "type": "python",
+            "request": "launch",
+            "module": "pytest",
+            "args": [
+                "${file}",
+                "-s",
+                "-vv"
+            ],
+            "console": "integratedTerminal"
+        },       
+        {
             "name": "Launch socialiazer",
             "type": "python",
             "request": "launch",

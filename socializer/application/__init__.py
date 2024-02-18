@@ -36,4 +36,7 @@ def create_app(config_filename=None):
     def load_user(user_id):
         return User.query.get(int(user_id))    
 
+    from application.posts.views import posts
+    app.register_blueprint(posts, url_prefix="/posts")
+    
     return app

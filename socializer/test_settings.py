@@ -8,3 +8,6 @@ test_db_path = os.path.join(BASE_DIR, 'tests', 'test_app.db')
 SQLALCHEMY_DATABASE_URI = 'sqlite:///' + test_db_path
 DEBUG = True
 TESTING = True
+
+# Add a SECRET_KEY for testing
+SECRET_KEY = 'a-very-secret-key-for-testing'
