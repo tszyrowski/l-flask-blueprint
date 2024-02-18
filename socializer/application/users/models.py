@@ -3,6 +3,7 @@ import datetime
 from sqlalchemy.ext.hybrid import hybrid_property
 
 from application import db, flask_bcrypt_instance
+from application import user_followed
 from application.posts.models import Post
 
 __all__ = ["followers", "User"]
@@ -77,6 +78,10 @@ class User(db.Model):
         if self.is_following(user):
             return False
         self.followed.append(user)
+
+        # Emit a signal that the user was followed
+        user_followed.send(self)
+
         return self
     
     def is_following(self, user):

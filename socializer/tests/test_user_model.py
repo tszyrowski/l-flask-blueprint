@@ -20,7 +20,7 @@ def test_create_user_instance(session):
     assert user.newsfeed().count() == 0
 
 
-def test_follow_user(session):
+def test_follow_user(session, caplog):
     """Create and save a user instance"""
 
     email = 'test_1@email.com'
@@ -47,6 +47,8 @@ def test_follow_user(session):
     assert user_1.followed.first().id == user_2.id
     assert user_2.followers.count() == 1
     assert user_2.followers.first().id == user_1.id
+
+    assert "User test_1 followed, ... signal emited" in caplog.text
 
     user_1.unfollow(user_2)
     session.commit()
